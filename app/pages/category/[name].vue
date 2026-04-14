@@ -1,3 +1,18 @@
+<script setup>
+import { useArticleStore } from "~/stores/articleStore";
+const route = useRoute();
+const store = useArticleStore();
+
+const filteredArticles = computed(() => {
+  //   return store.articles.filter(
+  //     (a) => a.category?.toLowerCase() === route.params.name,
+  //   );
+  return store.articles;
+});
+
+onMounted(() => store.fetchArticles());
+</script>
+
 <template>
   <div class="max-w-6xl mx-auto p-6">
     <h1 class="text-2xl font-bold mb-6 capitalize">
@@ -25,17 +40,3 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import { useArticleStore } from "~/stores/articleStore";
-const route = useRoute();
-const store = useArticleStore();
-
-const filteredArticles = computed(() => {
-  return store.articles.filter(
-    (a) => a.category?.toLowerCase() === route.params.name,
-  );
-});
-
-onMounted(() => store.fetchArticles());
-</script>
