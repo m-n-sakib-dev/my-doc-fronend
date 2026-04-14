@@ -5,6 +5,11 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/tailwindcss'
   ],
+  tailwindcss: {
+    config: {
+      plugins: [require('@tailwindcss/typography')],
+    }
+  },
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true }
 })
